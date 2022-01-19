@@ -1,3 +1,4 @@
+import Spinner from '@components/Spinner';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useInputFocus } from '@hooks/useInputFocus';
@@ -5,22 +6,25 @@ import SearchIcon from '@icons/SearchIcon';
 import { smallerThan } from '@utils/breakpoints';
 import { ChangeEventHandler } from 'react';
 
-interface SearchBarProps {
-  query: string;
-  onQueryChange: (query: string) => void;
-}
+import { useSearchModal } from './SearchModalContext';
 
-const SearchBar = ({ query, onQueryChange }: SearchBarProps) => {
+const SearchBar = () => {
+  const { query, setQuery, isRequesting } = useSearchModal();
+
   const { isFocused, ...bindInput } = useInputFocus(true);
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) =>
-    onQueryChange(event.currentTarget.value);
+    setQuery(event.currentTarget.value);
 
   return (
     <SContainer isFocused={isFocused}>
-      <SLabel htmlFor="search">
-        <SearchIcon />
-      </SLabel>
+      {isRequesting ? (
+        <Spinner />
+      ) : (
+        <SLabel htmlFor="search">
+          <SearchIcon />
+        </SLabel>
+      )}
       <SInput
         type="search"
         name="search"
@@ -36,34 +40,45 @@ const SearchBar = ({ query, onQueryChange }: SearchBarProps) => {
 const SContainer = styled.div<{ isFocused: boolean }>`
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
+  gap: 0.5rem;
+  padding: 1.125rem 0.75rem;
+
+  ${({ theme }) => css`
+    border-bottom: 1px solid ${theme.colors.gray[200]};
+    svg {
+      color: ${theme.colors.gray[400]};
+    }
+  `}
+
   ${({ theme, isFocused }) =>
     isFocused &&
     css`
-      border: 1px solid ${theme.colors.blue[500]};
-      border-radius: ${theme.radii.md};
-      box-shadow: ${theme.shadows.sm};
+      svg {
+        color: ${theme.colors.blue[600]};
+      }
     `}
 `;
 
 const SLabel = styled.label`
-  ${({ theme }) =>
-    css`
-      color: ${theme.colors.gray[600]};
-    `}
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const SInput = styled.input`
   display: block;
   width: 100%;
   border: none !important;
+  line-height: 1;
 
   ${({ theme }) => css`
-    font-size: ${theme.fontSizes.base};
+    color: ${theme.colors.gray[800]};
+    font-size: ${theme.fontSizes.lg};
 
-    ${smallerThan('mobile')} {
-      font-size: ${theme.fontSizes.sm};
+    ${smallerThan('tablet')} {
+      font-size: ${theme.fontSizes.base};
     }
   `}
 `;

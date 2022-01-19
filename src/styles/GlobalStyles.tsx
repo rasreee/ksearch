@@ -1,6 +1,5 @@
 import { css, Global } from '@emotion/react';
 
-import componentStyles from './componentStyles';
 import { overrideInputStyles, overrideScrollbarStyles } from './overrideStyles';
 
 const globalStyles = css`
@@ -52,7 +51,6 @@ const globalStyles = css`
 
   ${overrideScrollbarStyles}
   ${overrideInputStyles}
-  ${componentStyles}
 `;
 
 export default function GlobalStyles() {

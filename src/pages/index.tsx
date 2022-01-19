@@ -1,3 +1,3 @@
-import HomePage from 'containers/HomePage';
+import HomePage from '@containers/HomePage';
 
 export default HomePage;

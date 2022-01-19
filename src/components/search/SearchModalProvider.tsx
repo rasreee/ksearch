@@ -1,24 +1,15 @@
+import { useDebouncedState } from '@hooks/useDebouncedState';
 import { useKeyCombo } from '@hooks/useKeyCombo';
 import { EventKeys } from '@hooks/useKeyPress';
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { waitFor } from '@utils/waitFor';
+import { ReactNode, useEffect, useState } from 'react';
 
+import { getSearchResultsForQuery } from './getSearchResultsForQuery';
 import SearchModal from './SearchModal';
+import { SearchModalContext } from './SearchModalContext';
 import { SearchResultData } from './SearchResultData';
 
-interface ISearchModalContext {
-  isOpen: boolean;
-  onRequestOpen: () => void;
-  onRequestClose: () => void;
-  onSelect: (selectedSearchResult: SearchResultData) => void;
-}
-
-const SearchModalContext = createContext<ISearchModalContext | undefined>(undefined);
-
-export function useSearchModal() {
-  const context = useContext(SearchModalContext);
-  if (!context) throw new Error('SearchModalContext must be defined to use useSearchModal');
-  return context;
-}
+const DELAY_MS = 600;
 
 type SearchModalProviderProps = {
   children: ReactNode;
@@ -33,8 +24,50 @@ const SearchModalProvider = ({ children, onSelect }: SearchModalProviderProps) =
 
   useKeyCombo([EventKeys.META, 'k'], onRequestOpen);
 
+  const [query, setQuery] = useState('');
+  const [hits, setHits] = useDebouncedState<SearchResultData[]>([], DELAY_MS);
+
+  const [error, setError] = useState<string | null>(null);
+  const [isRequesting, setIsRequesting] = useState(false);
+
+  useEffect(() => {
+    const updateHits = async () => {
+      setIsRequesting(true);
+      setError(null);
+      let newHits: SearchResultData[] = [];
+      let newError: string | null = null;
+      try {
+        newHits = await getSearchResultsForQuery(query);
+        setHits(newHits);
+      } catch (e) {
+        console.error(e);
+        newError = (e as Error).message;
+      } finally {
+        await waitFor(DELAY_MS);
+        setIsRequesting(false);
+        setError(newError);
+        setHits(newHits);
+      }
+    };
+
+    updateHits();
+  }, [query, setError, setHits, setIsRequesting]);
+
   return (
-    <SearchModalContext.Provider value={{ isOpen, onRequestOpen, onRequestClose, onSelect }}>
+    <SearchModalContext.Provider
+      value={{
+        isOpen,
+        onRequestOpen,
+        onRequestClose,
+        query,
+        setQuery,
+        hits,
+        setHits,
+        error,
+        isRequesting,
+        onSelect
+      }}
+    >
       {children}
       <SearchModal />
     </SearchModalContext.Provider>

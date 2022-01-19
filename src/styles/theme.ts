@@ -34,8 +34,7 @@ const colors = {
     700: '#1d4ed8',
     800: '#1e40af',
     900: '#1e3a8a'
-  },
-  tailwindPrimary: '#0ea5e9'
+  }
 };
 
 const spacing = {
@@ -128,7 +127,7 @@ const shadows = {
 const radii = {
   none: '0px',
   sm: '0.125rem',
-  DEFAULT: '0.25rem',
+  base: '0.25rem',
   md: '0.375rem',
   lg: '0.5rem',
   xl: '0.75rem',

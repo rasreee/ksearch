@@ -29,9 +29,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 0;
-  border-radius: ${({ theme }) => theme.radii.md};
+  border-radius: ${({ theme }) => theme.radii.lg};
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
   background: #fff;
+  overflow: hidden;
 
   @media (min-width: 768px) {
     max-width: 46rem;

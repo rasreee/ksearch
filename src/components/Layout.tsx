@@ -6,18 +6,20 @@ const Main = styled.main`
   height: 100vh;
 `;
 
-const Container = styled.div`
+const Centered = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
-  padding: 10rem 0;
+  justify-content: center;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
 `;
 
 function Layout({ children }: PropsWithChildren<{}>) {
   return (
     <Main>
-      <Container>{children}</Container>
+      <Centered>{children}</Centered>
     </Main>
   );
 }

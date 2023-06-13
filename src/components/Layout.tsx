@@ -3,31 +3,34 @@ import { FC, PropsWithChildren } from "react";
 
 import { Header } from "./header";
 
-const Main = styled.main`
+const Root = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 `;
 
-const Centered = styled.div`
+const Main = styled.main`
+  width: 100%;
+  max-width: 50rem;
+  flex: 1;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100%;
-  min-height: 100%;
-  width: 100%;
 `;
 
 type LayoutProps = PropsWithChildren<{}>;
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
-    <div>
+    <Root>
       <Header />
-      <Main>
-        <Centered>{children}</Centered>
-      </Main>
-    </div>
+      <Main>{children}</Main>
+    </Root>
   );
 };
 

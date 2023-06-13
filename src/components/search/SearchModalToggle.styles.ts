@@ -7,7 +7,8 @@ export const Button = styled(PlainButton)`
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
-  min-width: 20vw;
+  width: 20vw;
+
   ${({ theme }) =>
     css`
       padding: 0.75rem 1.25rem;

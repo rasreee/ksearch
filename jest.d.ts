@@ -1,4 +1,4 @@
-import 'jest-extended';
+import "jest-extended";
 
 /**
  * Enhance the Node.js environment "global" variable to add our own types

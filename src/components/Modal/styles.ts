@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 /**
  * Wrapper that covers the entire screen as a backdrop

@@ -1,3 +1,3 @@
 export const KbdSymbols = {
-  CMD: '⌘'
+  CMD: "⌘",
 };

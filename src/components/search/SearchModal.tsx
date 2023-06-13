@@ -1,8 +1,8 @@
-import { Modal } from '@components/Modal';
+import { Modal } from "@components/Modal";
 
-import SearchBar from './SearchBar';
-import { useSearchModal } from './SearchModalContext';
-import SearchResults from './SearchResults';
+import SearchBar from "./SearchBar";
+import { useSearchModal } from "./SearchModalContext";
+import SearchResults from "./SearchResults";
 
 const SearchModal = () => {
   const { isOpen, onRequestClose } = useSearchModal();

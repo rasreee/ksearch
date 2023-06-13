@@ -1,8 +1,10 @@
-import { MutableRefObject, useEffect } from 'react';
+import { MutableRefObject, useEffect } from "react";
 
-import { EventKeys, useKeyPress } from './useKeyPress';
+import { EventKeys, useKeyPress } from "./useKeyPress";
 
-export const useAutoFocus = (ref: MutableRefObject<HTMLInputElement | null>) => {
+export const useAutoFocus = (
+  ref: MutableRefObject<HTMLInputElement | null>
+) => {
   useEffect(() => {
     ref.current?.focus();
   }, []);

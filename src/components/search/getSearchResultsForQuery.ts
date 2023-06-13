@@ -1,5 +1,5 @@
-import searchDataFixture from './searchDataFixture';
-import { SearchResultData } from './SearchResultData';
+import searchDataFixture from "./searchDataFixture";
+import { SearchResultData } from "./SearchResultData";
 
 export function getSearchResultsForQuery(
   query: string,
@@ -17,7 +17,7 @@ export function getSearchResultsForQuery(
     return a === b;
   });
 
-  console.log('Hits: ');
+  console.log("Hits: ");
   console.table(hits);
 
   return Promise.resolve(hits);

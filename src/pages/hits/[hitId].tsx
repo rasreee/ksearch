@@ -1,3 +1,3 @@
-import HitDetailsPage from '@containers/HitDetailsPage';
+import HitDetailsPage from "@containers/HitDetailsPage";
 
 export default HitDetailsPage;

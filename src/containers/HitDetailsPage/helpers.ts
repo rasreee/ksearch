@@ -1,8 +1,10 @@
-import searchDataFixture from '@components/search/searchDataFixture';
-import { SearchResultData } from '@components/search/SearchResultData';
-import { ParsedUrlQuery } from 'querystring';
+import searchDataFixture from "@components/search/searchDataFixture";
+import { SearchResultData } from "@components/search/SearchResultData";
+import { ParsedUrlQuery } from "querystring";
 
-export type NormalizedQuery<T extends Record<string, string | string[] | undefined>> = {
+export type NormalizedQuery<
+  T extends Record<string, string | string[] | undefined>
+> = {
   [Properties in keyof T as string]: string;
 };
 
@@ -12,16 +14,19 @@ export function normalizeQueryParam<T extends string = string>(
   return value as T;
 }
 
-export function getHitFromQuery(query: ParsedUrlQuery): SearchResultData | null {
-  const hitId = 'hitId' in query ? normalizeQueryParam<string>(query.hitId) : null;
+export function getHitFromQuery(
+  query: ParsedUrlQuery
+): SearchResultData | null {
+  const hitId =
+    "hitId" in query ? normalizeQueryParam<string>(query.hitId) : null;
 
   if (!hitId) {
-    console.log('❗ Error: hitId param was undefined');
+    console.log("❗ Error: hitId param was undefined");
     return null;
   }
 
   if (!Number.isInteger(parseInt(hitId))) {
-    console.log('❗ Error: hitId must be an integer. Got hitId=' + hitId);
+    console.log("❗ Error: hitId must be an integer. Got hitId=" + hitId);
     return null;
   }
 

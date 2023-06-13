@@ -1,8 +1,8 @@
-import { useClickOutside } from '@hooks/useClickOutside';
-import { EventKeys, useKeyPress } from '@hooks/useKeyPress';
-import React, { FC, ReactNode, useRef } from 'react';
+import { useClickOutside } from "@hooks/useClickOutside";
+import { EventKeys, useKeyPress } from "@hooks/useKeyPress";
+import React, { FC, ReactNode, useRef } from "react";
 
-import * as S from './styles';
+import * as S from "./styles";
 
 export interface ModalProps {
   /**

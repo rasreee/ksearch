@@ -1,6 +1,6 @@
-import { PlainButton } from '@components/Button';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import { PlainButton } from "@components/Button";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
 export const Button = styled(PlainButton)`
   display: flex;

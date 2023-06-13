@@ -1,4 +1,4 @@
-import { Dict } from './types';
+import { Dict } from "./types";
 
 export function pick<T extends Dict, K extends keyof T>(object: T, keys: K[]) {
   const result = {} as { [P in K]: T[P] };
@@ -12,7 +12,8 @@ export function pick<T extends Dict, K extends keyof T>(object: T, keys: K[]) {
   return result;
 }
 
-export const objectKeys = <T extends Dict>(obj: T) => Object.keys(obj) as unknown as (keyof T)[];
+export const objectKeys = <T extends Dict>(obj: T) =>
+  Object.keys(obj) as unknown as (keyof T)[];
 
 export function omit<T extends Dict, K extends keyof T>(object: T, keys: K[]) {
   const result: Dict = {};

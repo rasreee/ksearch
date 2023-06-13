@@ -4,7 +4,7 @@ export interface BaseBreakpointConfig {
   md: string;
   lg: string;
   xl: string;
-  '2xl'?: string;
+  "2xl"?: string;
   [key: string]: string | undefined;
 }
 
@@ -12,12 +12,12 @@ export interface BaseBreakpointConfig {
  * Breakpoints for responsive design
  */
 const Breakpoints = {
-  base: '0em',
-  sm: '30em',
-  md: '48em',
-  lg: '62em',
-  xl: '80em',
-  '2xl': '96em'
+  base: "0em",
+  sm: "30em",
+  md: "48em",
+  lg: "62em",
+  xl: "80em",
+  "2xl": "96em",
 };
 
 export const breakpoints = [
@@ -25,7 +25,7 @@ export const breakpoints = [
   Breakpoints.sm,
   Breakpoints.md,
   Breakpoints.lg,
-  Breakpoints.xl
+  Breakpoints.xl,
 ];
 
 export const minWidths = {
@@ -34,7 +34,7 @@ export const minWidths = {
   lg: breakpoints[2],
   mobile: breakpoints[0],
   tablet: breakpoints[1],
-  desktop: breakpoints[2]
+  desktop: breakpoints[2],
 };
 
 export const maxWidths = {
@@ -43,7 +43,7 @@ export const maxWidths = {
   lg: breakpoints[3],
   mobile: breakpoints[1],
   tablet: breakpoints[2],
-  desktop: breakpoints[3]
+  desktop: breakpoints[3],
 };
 
 export const BreakpointAliass = {
@@ -52,9 +52,15 @@ export const BreakpointAliass = {
   lg: above(maxWidths.md),
   mobile: below(minWidths.md),
   tablet: above(minWidths.md),
-  desktop: above(maxWidths.md)
+  desktop: above(maxWidths.md),
 };
-export type BreakpointAlias = 'sm' | 'md' | 'lg' | 'mobile' | 'tablet' | 'desktop';
+export type BreakpointAlias =
+  | "sm"
+  | "md"
+  | "lg"
+  | "mobile"
+  | "tablet"
+  | "desktop";
 
 export function below(bp: string) {
   return `@media screen and (max-width: ${bp})`;

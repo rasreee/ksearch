@@ -1,9 +1,9 @@
-import { MutableRefObject, RefObject, useEffect } from 'react';
+import { MutableRefObject, RefObject, useEffect } from "react";
 
-import { off, on } from './lib/events';
-import { useSyncedRef } from './useSyncedRef';
+import { off, on } from "./lib/events";
+import { useSyncedRef } from "./useSyncedRef";
 
-const DEFAULT_EVENTS = ['mousedown', 'touchstart'];
+const DEFAULT_EVENTS = ["mousedown", "touchstart"];
 
 /**
  * Triggers callback when user clicks outside the target element.
@@ -28,7 +28,10 @@ export function useClickOutside<T extends HTMLElement>(
       const { target: evtTarget } = event;
       const cb = cbRef.current;
 
-      if (!evtTarget || (!!evtTarget && !refRef.current.current.contains(evtTarget as Node))) {
+      if (
+        !evtTarget ||
+        (!!evtTarget && !refRef.current.current.contains(evtTarget as Node))
+      ) {
         cb.call(this, event);
       }
     }

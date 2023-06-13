@@ -1,8 +1,8 @@
 /* eslint-disable func-names */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DependencyList, useMemo, useRef } from 'react';
+import { DependencyList, useMemo, useRef } from "react";
 
-import { useUnmountEffect } from './useUnmountEffect';
+import { useUnmountEffect } from "./useUnmountEffect";
 
 export interface IDebouncedFunction<Fn extends (...args: any[]) => any> {
   (this: ThisParameterType<Fn>, ...args: Parameters<Fn>): void;
@@ -27,7 +27,10 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const waitTimeout = useRef<ReturnType<typeof setTimeout>>();
 
-  const lastCall = useRef<{ args: Parameters<Fn>; this: ThisParameterType<Fn> }>();
+  const lastCall = useRef<{
+    args: Parameters<Fn>;
+    this: ThisParameterType<Fn>;
+  }>();
 
   const clear = () => {
     if (timeout.current) {
@@ -79,7 +82,7 @@ export function useDebouncedCallback<Fn extends (...args: any[]) => any>(
 
       Object.defineProperties(wrapped, {
         length: { value: callback.length },
-        name: { value: `${callback.name || 'anonymous'}__debounced__${delay}` }
+        name: { value: `${callback.name || "anonymous"}__debounced__${delay}` },
       });
 
       return wrapped;

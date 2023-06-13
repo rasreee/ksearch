@@ -1,5 +1,7 @@
-import styled from '@emotion/styled';
-import { PropsWithChildren } from 'react';
+import styled from "@emotion/styled";
+import { FC, PropsWithChildren } from "react";
+
+import { Header } from "./header";
 
 const Main = styled.main`
   width: 100vw;
@@ -16,12 +18,17 @@ const Centered = styled.div`
   width: 100%;
 `;
 
-function Layout({ children }: PropsWithChildren<{}>) {
+type LayoutProps = PropsWithChildren<{}>;
+
+const Layout: FC<LayoutProps> = ({ children }) => {
   return (
-    <Main>
-      <Centered>{children}</Centered>
-    </Main>
+    <div>
+      <Header />
+      <Main>
+        <Centered>{children}</Centered>
+      </Main>
+    </div>
   );
-}
+};
 
 export default Layout;

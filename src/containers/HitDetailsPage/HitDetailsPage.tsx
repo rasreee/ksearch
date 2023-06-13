@@ -1,8 +1,8 @@
-import { PageContent } from '@components/Page';
-import { Redirect } from '@components/Redirect';
-import { useRouter } from 'next/router';
+import { PageContent } from "@components/Page";
+import { Redirect } from "@components/Redirect";
+import { useRouter } from "next/router";
 
-import { getHitFromQuery } from './helpers';
+import { getHitFromQuery } from "./helpers";
 
 export function HitDetailsPage() {
   const { query } = useRouter();

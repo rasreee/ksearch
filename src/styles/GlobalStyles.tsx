@@ -1,6 +1,6 @@
-import { css, Global } from '@emotion/react';
+import { css, Global } from "@emotion/react";
 
-import { overrideInputStyles, overrideScrollbarStyles } from './overrideStyles';
+import { overrideInputStyles, overrideScrollbarStyles } from "./overrideStyles";
 
 const globalStyles = css`
   *,
@@ -13,8 +13,8 @@ const globalStyles = css`
   }
 
   * {
-    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow,
-      transform, filter, backdrop-filter;
+    transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
   }
@@ -29,8 +29,9 @@ const globalStyles = css`
     line-height: 150%;
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-      'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;

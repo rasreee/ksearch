@@ -1,7 +1,7 @@
-import { KbdSymbols } from '@utils/kbdSymbols';
+import { KbdSymbols } from "@utils/kbdSymbols";
 
-import { useSearchModal } from './SearchModalContext';
-import * as S from './SearchModalToggle.styles';
+import { useSearchModal } from "./SearchModalContext";
+import * as S from "./SearchModalToggle.styles";
 
 const SearchModalToggle = () => {
   const searchModal = useSearchModal();

@@ -1,13 +1,13 @@
-import { useDebouncedState } from '@hooks/useDebouncedState';
-import { useKeyCombo } from '@hooks/useKeyCombo';
-import { EventKeys } from '@hooks/useKeyPress';
-import { waitFor } from '@utils/waitFor';
-import { ReactNode, useEffect, useState } from 'react';
+import { useDebouncedState } from "@hooks/useDebouncedState";
+import { useKeyCombo } from "@hooks/useKeyCombo";
+import { EventKeys } from "@hooks/useKeyPress";
+import { waitFor } from "@utils/waitFor";
+import { ReactNode, useEffect, useState } from "react";
 
-import { getSearchResultsForQuery } from './getSearchResultsForQuery';
-import SearchModal from './SearchModal';
-import { SearchModalContext } from './SearchModalContext';
-import { SearchResultData } from './SearchResultData';
+import { getSearchResultsForQuery } from "./getSearchResultsForQuery";
+import SearchModal from "./SearchModal";
+import { SearchModalContext } from "./SearchModalContext";
+import { SearchResultData } from "./SearchResultData";
 
 const DELAY_MS = 600;
 
@@ -16,15 +16,18 @@ type SearchModalProviderProps = {
   onSelect: (selectedSearchResult: SearchResultData) => void;
 };
 
-const SearchModalProvider = ({ children, onSelect }: SearchModalProviderProps) => {
+const SearchModalProvider = ({
+  children,
+  onSelect,
+}: SearchModalProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onRequestOpen = () => setIsOpen(true);
   const onRequestClose = () => setIsOpen(false);
 
-  useKeyCombo([EventKeys.META, 'k'], onRequestOpen);
+  useKeyCombo([EventKeys.META, "k"], onRequestOpen);
 
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [hits, setHits] = useDebouncedState<SearchResultData[]>([], DELAY_MS);
 
   const [error, setError] = useState<string | null>(null);
@@ -65,7 +68,7 @@ const SearchModalProvider = ({ children, onSelect }: SearchModalProviderProps) =
         setHits,
         error,
         isRequesting,
-        onSelect
+        onSelect,
       }}
     >
       {children}

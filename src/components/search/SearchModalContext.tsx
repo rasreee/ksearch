@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext } from "react";
 
-import { SearchResultData } from './SearchResultData';
+import { SearchResultData } from "./SearchResultData";
 
 export interface ISearchModalContext {
   isOpen: boolean;
@@ -15,10 +15,13 @@ export interface ISearchModalContext {
   onSelect: (selectedSearchResult: SearchResultData) => void;
 }
 
-export const SearchModalContext = createContext<ISearchModalContext | undefined>(undefined);
+export const SearchModalContext = createContext<
+  ISearchModalContext | undefined
+>(undefined);
 
 export function useSearchModal() {
   const context = useContext(SearchModalContext);
-  if (!context) throw new Error('SearchModalContext must be defined to use useSearchModal');
+  if (!context)
+    throw new Error("SearchModalContext must be defined to use useSearchModal");
   return context;
 }

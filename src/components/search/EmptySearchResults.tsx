@@ -1,11 +1,12 @@
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
 const EmptySearchResults = () => (
   <SContainer>
     <SHeading>No results found</SHeading>
     <SBody>
-      We can’t find anything with that term at the moment, try searching something else.
+      We can’t find anything with that term at the moment, try searching
+      something else.
     </SBody>
   </SContainer>
 );
@@ -24,7 +25,7 @@ const SHeading = styled.span`
   ${({ theme }) =>
     css`
       color: ${theme.colors.gray[800]};
-      font-size: ${theme.fontSizes['lg']};
+      font-size: ${theme.fontSizes["lg"]};
       font-weight: ${theme.fontWeights.medium};
     `}
 `;

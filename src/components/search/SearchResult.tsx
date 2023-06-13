@@ -1,7 +1,7 @@
-import { PlainButton } from '@components/Button';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { ReactNode } from 'react';
+import { PlainButton } from "@components/Button";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { ReactNode } from "react";
 
 interface SearchResultProps {
   onClick: () => void;

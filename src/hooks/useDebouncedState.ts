@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from "react";
 
-import { useDebouncedCallback } from './useDebouncedCallback';
-import { useSafeState } from './useSafeState';
+import { useDebouncedCallback } from "./useDebouncedCallback";
+import { useSafeState } from "./useSafeState";
 
 /**
  * Like `useSafeState` but its state setter is debounced.

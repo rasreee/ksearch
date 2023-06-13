@@ -1,15 +1,16 @@
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
-import EmptySearchResults from './EmptySearchResults';
-import { useSearchModal } from './SearchModalContext';
-import SearchResult from './SearchResult';
-import { SearchResultData } from './SearchResultData';
+import EmptySearchResults from "./EmptySearchResults";
+import { useSearchModal } from "./SearchModalContext";
+import SearchResult from "./SearchResult";
+import { SearchResultData } from "./SearchResultData";
 
 const SearchResults = () => {
   const { hits, onSelect, isRequesting } = useSearchModal();
 
-  const handleSelect = (selectedItem: SearchResultData) => () => onSelect(selectedItem);
+  const handleSelect = (selectedItem: SearchResultData) => () =>
+    onSelect(selectedItem);
 
   if (isRequesting) return null;
 
@@ -25,7 +26,10 @@ const SearchResults = () => {
       <SList>
         {hits.map((searchResult: SearchResultData) => (
           <SItem key={searchResult.id}>
-            <SearchResult key={searchResult.id} onClick={handleSelect(searchResult)}>
+            <SearchResult
+              key={searchResult.id}
+              onClick={handleSelect(searchResult)}
+            >
               {searchResult.title}
             </SearchResult>
           </SItem>

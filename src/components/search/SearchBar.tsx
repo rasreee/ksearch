@@ -1,12 +1,12 @@
-import Spinner from '@components/Spinner';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { useInputFocus } from '@hooks/useInputFocus';
-import SearchIcon from '@icons/SearchIcon';
-import { smallerThan } from '@utils/breakpoints';
-import { ChangeEventHandler } from 'react';
+import Spinner from "@components/Spinner";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { useInputFocus } from "@hooks/useInputFocus";
+import SearchIcon from "@icons/SearchIcon";
+import { smallerThan } from "@utils/breakpoints";
+import { ChangeEventHandler } from "react";
 
-import { useSearchModal } from './SearchModalContext';
+import { useSearchModal } from "./SearchModalContext";
 
 const SearchBar = () => {
   const { query, setQuery, isRequesting } = useSearchModal();
@@ -77,7 +77,7 @@ const SInput = styled.input`
     color: ${theme.colors.gray[800]};
     font-size: ${theme.fontSizes.lg};
 
-    ${smallerThan('tablet')} {
+    ${smallerThan("tablet")} {
       font-size: ${theme.fontSizes.base};
     }
   `}

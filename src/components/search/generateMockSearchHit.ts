@@ -1,6 +1,6 @@
-import faker from 'faker';
+import faker from "faker";
 
-import { SearchResultData } from '../search/SearchResultData';
+import { SearchResultData } from "../search/SearchResultData";
 
 export const generateMockSearchHit = (
   index: number,
@@ -11,6 +11,6 @@ export const generateMockSearchHit = (
     id: index,
     title: faker.lorem.words(3),
     sourceUrl: faker.lorem.slug(),
-    ...initialData
+    ...initialData,
   };
 };

@@ -1,13 +1,16 @@
 /* eslint-disable simple-import-sort/imports */
-import { useEffect, useMemo, useState } from 'react';
-import { useKeyboardEvent } from './useKeyboardEvent';
-import { EventKeys } from './useKeyPress';
+import { useEffect, useMemo, useState } from "react";
+import { useKeyboardEvent } from "./useKeyboardEvent";
+import { EventKeys } from "./useKeyPress";
 
-export function useKeyCombo(combo: (EventKeys | string)[], callback: () => void) {
+export function useKeyCombo(
+  combo: (EventKeys | string)[],
+  callback: () => void
+) {
   const [keysPressed, setKeysPressed] = useState<string[]>([]);
 
   const pressedCombo = useMemo(
-    () => (keysPressed.length ? keysPressed.join('+') : ''),
+    () => (keysPressed.length ? keysPressed.join("+") : ""),
     [keysPressed]
   );
 
@@ -19,13 +22,13 @@ export function useKeyCombo(combo: (EventKeys | string)[], callback: () => void)
     [],
     {
       eventOptions: {
-        passive: true
-      }
+        passive: true,
+      },
     }
   );
 
   useEffect(() => {
-    if (pressedCombo.includes(combo.join('+'))) {
+    if (pressedCombo.includes(combo.join("+"))) {
       callback();
       setKeysPressed([]);
     }

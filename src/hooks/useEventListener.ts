@@ -1,13 +1,17 @@
-import { RefObject, useEffect, useMemo } from 'react';
+import { RefObject, useEffect, useMemo } from "react";
 
-import { useIsMounted } from './useIsMounted';
-import { useSyncedRef } from './useSyncedRef';
+import { useIsMounted } from "./useIsMounted";
+import { useSyncedRef } from "./useSyncedRef";
 
 export function useEventListener<T extends EventTarget>(
   target: RefObject<T> | T | null,
   ...params:
-    | Parameters<T['addEventListener']>
-    | [string, EventListenerOrEventListenerObject | ((...args: any[]) => any), ...any]
+    | Parameters<T["addEventListener"]>
+    | [
+        string,
+        EventListenerOrEventListenerObject | ((...args: any[]) => any),
+        ...any
+      ]
 ): void {
   const isMounted = useIsMounted();
 
@@ -28,9 +32,12 @@ export function useEventListener<T extends EventTarget>(
 
         // we dont care if non-listener provided, simply dont do anything
         /* istanbul ignore else */
-        if (typeof listenerRef.current === 'function') {
+        if (typeof listenerRef.current === "function") {
           listenerRef.current.apply(this, args);
-        } else if (typeof (listenerRef.current as EventListenerObject).handleEvent === 'function') {
+        } else if (
+          typeof (listenerRef.current as EventListenerObject).handleEvent ===
+          "function"
+        ) {
           // eslint-disable-next-line prettier/prettier
           (listenerRef.current as EventListenerObject).handleEvent.apply(this, args);
         }
@@ -40,13 +47,14 @@ export function useEventListener<T extends EventTarget>(
   );
 
   useEffect(() => {
-    const tgt = target && 'current' in target ? target.current : target;
+    const tgt = target && "current" in target ? target.current : target;
     if (!tgt) return undefined;
 
     const restParams = params.slice(2);
 
     tgt.addEventListener(params[0], eventListener, ...restParams);
 
-    return () => tgt.removeEventListener(params[0], eventListener, ...restParams);
+    return () =>
+      tgt.removeEventListener(params[0], eventListener, ...restParams);
   }, [target, params[0]]);
 }

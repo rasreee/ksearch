@@ -1,8 +1,8 @@
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { StyledProps } from '@styles/types';
-import { smallerThan } from '@utils/breakpoints';
-import { pseudo } from '@utils/pseudo';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { StyledProps } from "@styles/types";
+import { smallerThan } from "@utils/breakpoints";
+import { pseudo } from "@utils/pseudo";
 
 const sharedStyles = ({ theme }: StyledProps) => css`
   padding: 0.75rem;
@@ -15,7 +15,7 @@ const sharedStyles = ({ theme }: StyledProps) => css`
   }
   font-weight: ${theme.fontWeights.medium};
   font-size: ${theme.fontSizes.lg};
-  ${smallerThan('tablet')} {
+  ${smallerThan("tablet")} {
     font-size: ${theme.fontSizes.sm};
   }
 `;
@@ -26,10 +26,10 @@ export const PlainButton = styled.button`
   ${sharedStyles};
   ${({ theme }) =>
     css`
-      ${pseudo('_hover')} {
+      ${pseudo("_hover")} {
         background: ${theme.colors.gray[100]};
       }
-      ${pseudo('_active')} {
+      ${pseudo("_active")} {
         background: ${theme.colors.gray[200]};
       }
     `}
@@ -42,10 +42,10 @@ export const PrimaryButton = styled.button`
     css`
       background: ${theme.colors.blue[600]};
       color: white;
-      ${pseudo('_hover')} {
+      ${pseudo("_hover")} {
         background: ${theme.colors.blue[700]};
       }
-      ${pseudo('_active')} {
+      ${pseudo("_active")} {
         background: ${theme.colors.blue[800]};
       }
     `}

@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { SVGProps } from 'react';
+import styled from "@emotion/styled";
+import { SVGProps } from "react";
 
 const SearchIcon = (props: SVGProps<SVGSVGElement>) => {
   return (

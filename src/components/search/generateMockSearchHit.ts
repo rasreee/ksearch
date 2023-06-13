@@ -2,7 +2,7 @@ import faker from 'faker';
 
 import { SearchResultData } from '../search/SearchResultData';
 
-export const generateMockSearchResultData = (
+export const generateMockSearchHit = (
   index: number,
   _initialData?: Partial<SearchResultData>
 ): SearchResultData => {
